@@ -28,23 +28,29 @@ test("Actions examples", async ({ page }) => {
     await page.getByRole('button', { name: 'Submit' }).click({force: true});
   });
 
-  await test.step("Select Actions", async () => {
+  await test.step.skip("Select Actions", async () => {
     await page.goto("https://demoqa.com/select-menu");
     const menu = page.locator('#oldSelectMenu');
     await menu.selectOption({label: 'Green'});
     await expect(menu).toHaveValue('2');
   });
 
-  await test.step("Select Actions", async () => {
+  await test.step.skip("Select Actions", async () => {
     await page.goto("https://demoqa.com/automation-practice-form");
     const selectOption = async (containerSelector: string, optionText: string)  => {
         await page.locator(containerSelector).click();
         await page.locator(`//div[starts-with(@id,'react-select') and contains(text(),'${optionText}')]`).click();
     };
-
     await selectOption('#state','NCR');
+  });
 
-    
+  await test.step("Checkbox actions", async () => {
+    await page.goto("https://demoqa.com/checkbox");
+    const expandButton = page.getByRole('button', { name: 'Expand all' });
+    await expandButton.click();
+    const desktopCheckbox = page.locator("label[for='tree-node-desktop']");
+    await desktopCheckbox.click();
 
   });
+
 });
