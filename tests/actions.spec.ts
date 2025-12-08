@@ -50,7 +50,6 @@ test("Actions examples", async ({ page }) => {
     await expandButton.click();
     const desktopCheckbox = page.locator("label[for='tree-node-desktop']");
     await desktopCheckbox.click();
-
   });
 
 });
