@@ -10,10 +10,10 @@ export const test = base.extend<{
   authUser: async ({ page, baseURL }, use) => {
 
     // Usar baseURL del playwright.config.ts
-    await page.goto(baseURL!);
+    await page.goto('https://cloud.idurarapp.com/login');
 
-    await page.fill('#normal_login_email', process.env.LOGIN_USER as string);
-    await page.fill('#normal_login_password', process.env.PASSWORD_USER as string);
+    await page.fill('#normal_login_email', 'abdias.alpire@assuresoft.com');
+    await page.fill('#normal_login_password', '7928003cbaA@');
 
     await page.click('button[type="submit"]');
     await page.waitForURL('https://cloud.idurarapp.com/');
